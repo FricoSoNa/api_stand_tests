@@ -1,18 +1,48 @@
+import time
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 driver = webdriver.Chrome()
+
+# PANTALLA COMPLETA
+{
 "driver.maximize_window()" # Modo de pantalla completa
+}
+driver.get('https://around-v1.nm.tripleten-services.com/signin?lng=es') #abrir página
 
-"assert driver.current_url == 'https://www.google.com/'" # obtener url de un sitio
-"assert google.com' in driver.current_url" # comprobar solo unaparte del url
+assert '/signin' in driver.current_url # comprobar solo unaparte del url
+driver.get
 
+"assert driver.current_url == 'https://around-v1.nm.tripleten-services.com/signin?lng=es'" # obtener url de un sitio
 
-
-driver.get('https://www.google.com/')
-
+# CHROME OPTIONS
+{
 "chrome_options = webdriver.ChromeOptions()"
-"chrome_options.add_argument('--headless') # Ejecuta el navegador desde la terminal sin una interfaz gráfica"
-"chrome_options.add_argument('--window-size=640,480') # Ajusta el tamaño de la ventana a 640 x 480 pixeles"
-"driver = webdriver.Chrome(options=chrome_options) # Crea un controlador y pasa la configuración de los ajustes establecidos"
 
-driver.quit()
+"chrome_options.add_argument('--headless')" # Ejecuta el navegador desde la terminal sin una interfaz gráfica"
+
+"chrome_options.add_argument('--window-size=640,480')" # Ajusta el tamaño de la ventana a 640 x 480 pixeles"
+
+"driver = webdriver.Chrome(options=chrome_options)" # Crea un controlador y pasa la configuración de los ajustes establecidos"
+}
+
+# CLASE BY
+{
+driver.find_element(By.XPATH,".//img"),
+"By.CLASS_NAME" # por nombre de clase
+"By.CSS_SELECTOR" # buscar por selector CSS
+"By.ID" # buscar por atributo ID
+"By.LINK_TEXT" # buscar por el texto del enlace
+"By.PARTIAL_LINK_TEXT" # buscar por una parte del texto del enlace
+"By.NAME" # buscar por el atributo name
+"By.TAG_NAME" # buscar por la etiqueta HTML
+"By.XPATH" # buscar por XPATH
+}
+
+# ACCEDER A LOS ATRIBUTOS
+
+#<div class="profile__image" style="background-image": url("https://example.com/files/profile-pic.png");>...</div>
+
+
+time.sleep(10) # tiempo de espera para el siguiente
+driver.quit() # cerrar ventana
