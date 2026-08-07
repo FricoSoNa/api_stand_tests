@@ -1,6 +1,7 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.remote.webelement import WebElement
 
 driver = webdriver.Chrome()
 
@@ -8,13 +9,14 @@ driver = webdriver.Chrome()
 {
 "driver.maximize_window()" # Modo de pantalla completa
 }
+
 driver.get('https://around-v1.nm.tripleten-services.com/signin?lng=es') #abrir página
 
-assert '/signin' in driver.current_url # comprobar solo unaparte del url
-driver.get
+{
+"assert '/signin' in driver.current_url # comprobar solo una parte del url"
 
 "assert driver.current_url == 'https://around-v1.nm.tripleten-services.com/signin?lng=es'" # obtener url de un sitio
-
+}
 # CHROME OPTIONS
 {
 "chrome_options = webdriver.ChromeOptions()"
@@ -26,9 +28,10 @@ driver.get
 "driver = webdriver.Chrome(options=chrome_options)" # Crea un controlador y pasa la configuración de los ajustes establecidos"
 }
 
+time.sleep(10) # tiempo de espera para el siguiente
+
 # CLASE BY
 {
-driver.find_element(By.XPATH,".//img"),
 "By.CLASS_NAME" # por nombre de clase
 "By.CSS_SELECTOR" # buscar por selector CSS
 "By.ID" # buscar por atributo ID
@@ -38,11 +41,13 @@ driver.find_element(By.XPATH,".//img"),
 "By.TAG_NAME" # buscar por la etiqueta HTML
 "By.XPATH" # buscar por XPATH
 }
+tittle_element = driver.find_element(By.CSS_SELECTOR,".auth-form__title")
+print("Login form tittle:", tittle_element.text)
 
 # ACCEDER A LOS ATRIBUTOS
 
 #<div class="profile__image" style="background-image": url("https://example.com/files/profile-pic.png");>...</div>
 
 
-time.sleep(10) # tiempo de espera para el siguiente
+
 driver.quit() # cerrar ventana
