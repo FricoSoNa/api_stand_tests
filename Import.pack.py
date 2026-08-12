@@ -41,9 +41,13 @@ time.sleep(10) # tiempo de espera para el siguiente
 "By.TAG_NAME" # buscar por la etiqueta HTML
 "By.XPATH" # buscar por XPATH
 }
-tittle_element = driver.find_element(By.CSS_SELECTOR,".auth-form__title")
-print("Login form tittle:", tittle_element.text)
+email = driver.find_element(By.ID,"email")
+password = driver.find_element(By.ID,"password")
 
+assert email.get_attribute('placeholder') == 'Correo electrónico', f"Expected 'Correo electrónico', but got '{email.get_attribute('placeholder')}'"
+assert password.get_attribute('placeholder') == 'Contraseña', f"Expected 'Contraseña', but got '{password.get_attribute('placeholder')}'"
+
+print ("Pruebas exitosas")
 # ACCEDER A LOS ATRIBUTOS
 
 #<div class="profile__image" style="background-image": url("https://example.com/files/profile-pic.png");>...</div>
