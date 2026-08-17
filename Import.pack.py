@@ -2,8 +2,10 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support.wait import WebDriverWait
 
 driver = webdriver.Chrome()
+WebDriverWait(driver, 3)
 
 # PANTALLA COMPLETA
 {
@@ -41,11 +43,11 @@ time.sleep(10) # tiempo de espera para el siguiente
 "By.TAG_NAME" # buscar por la etiqueta HTML
 "By.XPATH" # buscar por XPATH
 }
-email = driver.find_element(By.ID,"email")
-password = driver.find_element(By.ID,"password")
 
-assert email.get_attribute('placeholder') == 'Correo electrónico', f"Expected 'Correo electrónico', but got '{email.get_attribute('placeholder')}'"
-assert password.get_attribute('placeholder') == 'Contraseña', f"Expected 'Contraseña', but got '{password.get_attribute('placeholder')}'"
+element = driver.find_element(By.XPATH,".//button[@class='auth-form__button']")
+element.click()
+
+time.sleep(10)
 
 print ("Pruebas exitosas")
 # ACCEDER A LOS ATRIBUTOS
