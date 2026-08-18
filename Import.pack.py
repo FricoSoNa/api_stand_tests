@@ -1,7 +1,9 @@
 import time
 from selenium import webdriver
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 driver = webdriver.Chrome()
@@ -44,11 +46,15 @@ time.sleep(10) # tiempo de espera para el siguiente
 "By.XPATH" # buscar por XPATH
 }
 
-element = driver.find_element(By.XPATH,".//button[@class='auth-form__button']")
-element.click()
+driver.find_element(By.ID, "email").send_keys("langosta@gmail.com")
+driver.find_element(By.ID, "password").send_keys("cacota")
 
 time.sleep(10)
 
+driver.find_element(By.CLASS_NAME, "auth-form__button").click()
+WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located((By.CLASS_NAME, "header__user")))
+
+assert driver.current_url == "https://around-v1.nm.tripleten-services.com/"
 print ("Pruebas exitosas")
 # ACCEDER A LOS ATRIBUTOS
 
